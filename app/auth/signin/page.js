@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import './page.css'
 
 export default function Signin() {
     const [formData, setFormData] = useState({ email: "", password: "" });
@@ -38,33 +39,50 @@ export default function Signin() {
     }
 
     return (
-        <div className="h-screen bg-blue-400 flex justify-center items-center">
-            <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center w-[40%] min-h-[40vh] p-4 bg-red-400 gap-4">
+        
+        <div className="signin-box">
+            <div className="logo-box">
+            <img src="/logo1.png"  className="logo-signin" alt="logo" />
+            <img src="/title.png" alt="title" className="logo-title" />
+            </div>
+            <div className="main-signin">
+            <form onSubmit={handleSubmit} className="form-box">
                 {error && <p className="text-red-800">{error}</p>}
-                <input
+                <h1 className="mainheading">Welcome to FinTrack</h1>
+                <p className="desc">Track your money with FinTrack.Sign in or create an account to get started.</p>
+                <div className="email-box">
+                  <p className="email-text">Email</p>
+                  <input
                     type="email"
                     name="email"
-                    placeholder="Email"
+                    placeholder="you@example.com"
                     onChange={handleChange}
-                    className="w-[50%] p-1 px-2 rounded-sm border-none outline-none"
+                    className="input-box"
                     required
-                />
-                <input
+                  />
+                </div>
+               <div className="password-box">
+                 <p className="email-text">Password</p>
+                 <input
                     type="password"
                     name="password"
-                    placeholder="Password"
+                    placeholder="Your Password"
                     onChange={handleChange}
-                    className="w-[50%] p-1 px-2 rounded-sm border-none outline-none"
+                    className="input-box"
                     required
-                />
-                <div className="w-[50%]" onClick={handleForgotPassword}> Forgot Password?</div>
-                <button className="bg-black text-white w-[50%] p-1 px-2 rounded-sm">Sign In</button>
-                <div className="w-[50%] h-[2px] bg-black"></div>
-                <div className="w-[50%] -mt-3">
-                    <div className="text-sm text-center mb-2">Don't Have An Account?</div>
-                    <button  className="bg-black text-white p-1 w-[100%] px-2 rounded-sm" onClick={handleSignUp}>Sign Up</button>
+                 />
+               </div>
+               
+                <div className="w-[50%] text-[#b4b4b4]" onClick={handleForgotPassword}> Forgot Password?</div>
+                <button className="btn-box">Sign In</button>
+                <div className="line-box"></div>
+                <div className="w-[100%] -mt-3">
+                    <div className="text-sm text-[#b4b4b4] mb-2">Don't Have An Account?</div>
+                    <button  className="btn-box-2" onClick={handleSignUp}>Create an account</button>
                 </div>
             </form>
+            </div>
+           
         </div>
     );
 }

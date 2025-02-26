@@ -1,0 +1,166 @@
+.signin-box{
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    /* align-items: center;    */
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.logo-signin{
+    padding: 5px;
+   
+    height: 3rem;
+    width: 5rem;
+}
+.form-box{
+    width: 80% ;
+    display: flex;
+   
+    flex-direction: column;
+    gap: 1.2rem;
+    
+    
+    padding: 1.4rem;
+    
+}
+.logo-box{
+    height: 8%;
+    width: 100vw;
+   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    display: flex;
+     /* justify-content: center;  */
+    align-items: center;
+}
+.logo-title{
+   height: 1.5rem;
+   width: 6rem;
+   display: flex;
+   align-items: center;
+}
+.mainheading{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1c1b1b;
+    
+}
+.desc{
+    font-size: 0.9rem;
+    color: #1e1e1e;
+    font-weight: 300;
+}
+.email-box{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.email-text{
+    font-size: 0.9rem;
+    color: #1e1e1e;
+    font-weight: 600;
+}
+.password-box{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.input-box{
+    border: 1px solid #c1bdbd;
+    outline: none;
+    width: 40%;
+    padding: 0.6rem;
+    border-radius: 10px;
+    
+}
+.btn-box{
+    border: 1px solid #6a6565;
+    outline: none;
+    width: 45%;
+    padding: 0.6rem;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+}
+.btn-box-2{
+    /* border: 1px solid #6a6565; */
+    outline: none;
+    width: 45%;
+    padding: 0.6rem;
+    border-radius: 10px;
+    background-color: #efefef;
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+}
+.btn-box-2:hover{
+    background-color: #dcdcdc;
+}
+.btn-box:hover{
+    background-color: #151515;
+} 
+.line-box{
+    background-color: #6a6565;
+    width: 55%;
+    height: 0.1rem;
+}
+.main-signin{
+    height: 92%;
+   
+    width: 100vw;
+    margin-left: 10%;
+    margin-top: 3%;
+}
+ @media  screen and (max-width: 768px){
+    .main-signin{
+      
+       margin: 0;
+        height: 92%;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        
+    }
+    .form-box{
+        /* justify-content: center; */
+        /* align-items: center; */
+       min-width: 360px;
+       margin-top: 15%;
+    }
+    .signin-box{
+        height: 100vh;
+        width: 100vw;
+    }
+    .logo-box{
+        height: 8%;
+        width: 100vw;
+    }
+    .logo-signin{
+        height: 2rem;
+        width: 4rem;
+    }
+    .logo-title{
+        height: 1.2rem;
+        width: 5rem;
+    }
+    .mainheading{
+        font-size: 1.2rem;
+    }
+    .desc{
+        font-size: 0.8rem;
+    }
+    .email-text{
+        font-size: 0.8rem;
+    }
+    .input-box{
+        width: 100%;
+    }
+    .btn-box{
+        width: 100%;
+    }
+    .btn-box-2{
+        width: 100%;
+    }
+    
+ }
