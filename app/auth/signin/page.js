@@ -34,55 +34,65 @@ export default function Signin() {
         router.push("/auth/signup");
     };
 
-    const handleForgotPassword =()=>{
+    const handleForgotPassword = () => {
         router.push("/auth/createpassword")
     }
 
     return (
-        
+
         <div className="signin-box">
             <div className="logo-box">
-            <img src="/logo1.png"  className="logo-signin" alt="logo" />
-            <img src="/title.png" alt="title" className="logo-title" />
+                <img src="/logo1.png" className="logo-signin" alt="logo" />
+                <img src="/title.png" alt="title" className="logo-title" />
             </div>
-            <div className="main-signin">
-            <form onSubmit={handleSubmit} className="form-box">
-                {error && <p className="text-red-800">{error}</p>}
-                <h1 className="mainheading">Welcome to FinTrack</h1>
-                <p className="desc">Track your money with FinTrack.Sign in or create an account to get started.</p>
-                <div className="email-box">
-                  <p className="email-text">Email</p>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="you@example.com"
-                    onChange={handleChange}
-                    className="input-box"
-                    required
-                  />
-                </div>
-               <div className="password-box">
-                 <p className="email-text">Password</p>
-                 <input
-                    type="password"
-                    name="password"
-                    placeholder="Your Password"
-                    onChange={handleChange}
-                    className="input-box"
-                    required
-                 />
-               </div>
-               
-                <div className="w-[50%] text-[#b4b4b4]" onClick={handleForgotPassword}> Forgot Password?</div>
-                <button className="btn-box">Sign In</button>
-                <div className="line-box"></div>
-                <div className="w-[100%] -mt-3">
-                    <div className="text-sm text-[#b4b4b4] mb-2">Don't Have An Account?</div>
-                    <button  className="btn-box-2" onClick={handleSignUp}>Create an account</button>
-                </div>
-            </form>
+            <div className="main-signin   ">
+                <form onSubmit={handleSubmit} className="form-box">
+                    {error && <p className="text-red-800">{error}</p>}
+                    <div className="main-content">
+                    <h1 className="mainheading">Welcome to FinTrack,</h1>
+                    <p className="desc">Track your money with <span className="font-semibold">FinTrack</span>. Sign in or create an account to get started.</p>
+                    </div>
+                   
+                    <div className="email-box">
+                        <p className="email-text">Email</p>
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="you@example.com"
+                            onChange={handleChange}
+                            className="input-box"
+                            required
+                        />
+                    </div>
+                    <div className="password-box">
+                        <p className="email-text">Password</p>
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Your Password"
+                            onChange={handleChange}
+                            className="input-box"
+                            required
+                        />
+                    </div>
+                     <div className="sign-in-box">
+                     <div className="w-[50%] text-gray-500 cursor-pointer" onClick={handleForgotPassword}> Forgot Password?</div>
+                     <button className="btn-box">Sign In</button>
+                     </div>
+
+                   
+                    <div className="line-box"></div>
+                   
+                    <div className="w-[100%] flex-col gap-0">
+                        <div className="text-lg text-gray-500 mb-2">Don't Have An Account?</div>
+                        <button className="btn-box-2" onClick={handleSignUp}>Create an account</button>
+                    </div>
+                </form>
+                {/* <div className="hidden xl:flex ">
+                    <img src="/Interface_img.jpg" className="object-cover"></img>
+                </div> */}
             </div>
-           
+
         </div>
     );
 }

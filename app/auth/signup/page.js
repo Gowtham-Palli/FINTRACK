@@ -1,7 +1,7 @@
-"use client"
-
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+
+import './page2.css'
 
 export default function Signup(){
     const [formData, setFormData] = useState({name:"", email:"", password:""});
@@ -27,15 +27,40 @@ export default function Signup(){
     }
 
     return (
-        <div className="bg-blue-400 h-screen flex items-center justify-center ">
-            <form action="" className="flex flex-col items-center justify-center w-[40%] h-[40vh] p-4 bg-red-400 gap-4" onSubmit={handleSubmit}>
+        <div className="signin-box">
+            <div className="logo-box">
+                <img src="/logo1.png" className="logo-signin" alt="logo" />
+                <img src="/title.png" alt="title" className="logo-title" />
+            </div>
+            <div className="main-signin">
+            <form action="" className="form-box" onSubmit={handleSubmit}>
                 {error && <p className="text-red-800">{error}</p>}
-                <input type="name" name="name" placeholder="Name" onChange={handleChange} className="w-[50%]  p-1 px-2 rounded-sm border-none outline-none" required />
-                <input type="email" name="email" placeholder="Email" onChange={handleChange} className="w-[50%] p-1 px-2 rounded-sm border-none outline-none" required />
-                <input type="password" name="password"placeholder="Password" onChange={handleChange} className="w-[50%] p-1 px-2 rounded-sm border-none outline-none" required />
-                <input type="password" name="confirmpassword"placeholder="Confirm Password" onChange={handleChange} className="w-[50%] p-1 px-2 rounded-sm border-none outline-none" required />
-                <button className="bg-black text-white w-[50%]  p-1 px-2 rounded-sm" >Sign Up</button>
+                <div className="main-content">
+                    <h1 className="mainheading">Welcome to FinTrack,</h1>
+                    <p className="desc">Track your money with <span className="font-semibold">FinTrack</span>. Sign in or create an account to get started.</p>
+                    </div>
+                  <div className="email-box">
+                    <p className="email-text">Username</p>
+                  <input type="name" name="name" placeholder="Name" onChange={handleChange} className="input-box" required />
+                    </div> 
+               
+                <div className="email-box">
+                <p className="email-text">Email</p>
+                <input type="email" name="email" placeholder="Email" onChange={handleChange} className="input-box" required />
+                </div>
+               <div className="email-box">
+                <p className="email-text">Password</p>
+                <input type="password" name="password"placeholder="Password" onChange={handleChange} className="input-box" required />
+               </div>
+               <div className="email-box">
+                <p className="email-text">Confirm Password</p>
+                <input type="password" name="confirmpassword"placeholder="Confirm Password" onChange={handleChange} className="input-box" required />
+               </div>
+               
+                <button className="btn-box" >Sign Up</button>
             </form>
+            </div>
+            
         </div>
     )
 }

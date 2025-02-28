@@ -70,11 +70,7 @@
     color: #1e1e1e;
     font-weight: 600;
 }
-.password-box{
-    display: flex;
-    flex-direction: column;
-    
-}
+
 .input-box{
     border: 1px solid #c1bdbd;
     outline: none;
@@ -82,13 +78,10 @@
     height: 3.7rem;
     padding: 0.6rem;
     border-radius: 10px;
+    max-width: 300px;
     
 }
-.sign-in-box{
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-}
+
 .btn-box{
     border: 1px solid #6a6565;
     outline: none;
@@ -99,6 +92,7 @@
     background-color: black;
     color: white;
     margin-top: 0.4rem;
+    max-width: 300px;
 }
 .btn-box-2{
     /* border: 1px solid #6a6565; */
@@ -134,6 +128,36 @@
    padding-left: 10%
    ;
    align-items: center;
+}
+@media (min-width:1396px){
+    .btn-box{
+        width:30%;
+        
+    }
+    .btn-box-2{
+        width: 30%;
+    }
+    .input-box{
+      width:29%;
+    }
+    .line-box{
+        width: 30%;
+    }
+}
+@media (min-width:930px) and (max-width:1396px){
+    .btn-box{
+        width:50%;
+        
+    }
+    .btn-box-2{
+        width: 50%;
+    }
+    .input-box{
+      width:49%;
+    }
+    .line-box{
+        width: 50%;
+    }
 }
 @media (min-width: 600px) and  (max-width:930px) {
     .btn-box{
@@ -210,17 +234,3 @@
      }
     
  }
- @media (min-width:930px){
-    .btn-box{
-        width:70%;
-    }
-    .btn-box-2{
-        width: 70%;
-    }
-    .input-box{
-        width:66%;
-    }
-    .line-box{
-        width: 70%;
-    }
-}

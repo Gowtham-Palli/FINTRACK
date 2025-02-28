@@ -1,13 +1,35 @@
 "use client";
 
 import { FaBars, FaUserCircle, FaBell, FaChartLine } from "react-icons/fa";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './page.css';
-import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
     const [menu, setMenu] = useState(false);
-    const { data: session } = useSession();
+    const [user, setUser] = useState(null);
+    const router = useRouter();
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const userEmail = localStorage.getItem('user_email'); // Get user email from storage (or replace with session)
+                if (!userEmail) return;
+    
+                const res = await fetch(`/api/auth/user?email=${userEmail}`);
+                const data = await res.json();
+                if (res.ok) setUser(data.user);
+            } catch (error) {
+                console.error('Error fetching user:', error);
+            }
+        };
+        fetchUser();
+    }, []);
+
+    const handleLogOut = async () => {
+        await fetch('/api/auth/logout', { method: 'POST' });
+        router.push('/auth/signin'); // Redirect to login page
+    };
 
     const handleMenuBar = () => {
         setMenu(!menu);
@@ -73,11 +95,15 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                {session?.user && (
+                {user? (
                     <div className="flex flex-col items-center gap-3 p-3">
                         <FaUserCircle className="text-2xl"/>
-                        <p>{session.user.name}</p>
-                    </div>
+                        <p>{user.name}</p>
+                    </div> ) :(
+                        <div>
+                            <p>Log In</p>
+                            <button onClick={handleLogOut}>Log Out</button>
+                        </div>
                 )}
             </div>
         </>

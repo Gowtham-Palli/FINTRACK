@@ -1,7 +1,7 @@
 import { connectDB } from "@/lib/db";
 import bcrypt from "bcryptjs";
 import User from "@/models/User";
-import jwt from "jsonwebtoken";
+import { NextResponse } from 'next/server';
 
 export async function POST(req) {
     await connectDB();
@@ -11,25 +11,26 @@ export async function POST(req) {
         console.log("🔍 Received Password:", password);
 
         if (!email || !password) {
-            return new Response(JSON.stringify({ error: "Email and password are required" }), { status: 400 });
+            return NextResponse.json({ error: "Email and password are required" }, { status: 400 });
         }
 
         const user = await User.findOne({ email });
         console.log("🛠 Found User:", user);
 
         if (!user) {
-            return new Response(JSON.stringify({ error: "No user exists with this email, please signup" }), { status: 400 });
+            return NextResponse.json({ error: "No user exists with this email, please signup" }, { status: 400 });
         }
 
         const isValid = await bcrypt.compare(password, user.password);
         if (!isValid) {
-            return new Response(JSON.stringify({ error: "Incorrect Password" }), { status: 401 });
+            return NextResponse.json({ error: "Incorrect Password" }, { status: 401 });
         }
-
-        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
-        return new Response(JSON.stringify({ message: "Login Successful", token }), { status: 200 });
+        
+        const response = NextResponse.json({ message: 'Login successful', user }, { status: 200 });
+            response.cookies.set('user_email', email, { httpOnly: true, path: '/' });
+            return response;
     } catch (error) {
         console.error("Error during login:", error);
-        return new Response(JSON.stringify({ error: "Internal Server Error" }), { status: 500 });
+        return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
     }
 }
